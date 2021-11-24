@@ -1,0 +1,83 @@
+<div class = "content">
+  <div class="container text-center" style="border: 0.1px solid black; padding: 30px; border-radius: 10px;">
+    <div class="container-fluid px-4 animate__animated animate__bounceInLeft">
+          <h1 class="mt-4">Crear productos</h1>
+    </div>
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre producto</label>
+        <input type="text" class="form-control" [(ngModel)]="nombreproducto" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nit proveedor</label>
+        <input type="number" class="form-control" [(ngModel)]="nitproveedor" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Iva compra</label>
+        <input type="number" class="form-control" [(ngModel)]="ivacompra" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Precio compra</label>
+        <input type="number" class="form-control" [(ngModel)]="preciocompra" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Precio venta</label>
+        <input type="number" class="form-control" [(ngModel)]="precioventa" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="postData()">Crear</button>
+
+  </div>
+  <div class="container text-center mt-5" style="border: 0.1px solid black; padding: 30px; border-radius: 10px;">
+
+    <div class="container-fluid px-4 animate__animated animate__bounceInLeft">
+      <h1 class="mt-4">Cargar productos</h1>
+</div>
+
+
+
+
+
+    <input class="form-control mb-3" type="file" (change)="onChange($event)" accept=".csv">
+
+    <button (click)="onUpload()" class="btn btn-success mx-3 mb-3"><i class="fas fa-file-upload"></i>
+      Cargar
+    </button>
+
+
+
+    <div class="container-fluid px-4 animate__animated animate__bounceInLeft">
+      <h1 class="mt-4">Tabla productos</h1>
+</div>
+
+
+  <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Codigo Producto</th>
+            <th>Nombre Producto</th>
+            <th>NIT Proveedor</th>
+            <th>Precio Compra</th>
+            <th>IVA compra</th>
+            <th>Precio Venta</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of contenido">
+            <td>{{producto.codigoproducto}}</td>
+            <td>{{producto.nombreproducto}}</td>
+            <td>{{producto.nitproveedor}}</td>
+            <td>{{producto.preciocompra}}</td>
+            <td>{{producto.ivacompra}}</td>
+            <td>{{producto.precioventa}}</td>
+        </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</div>

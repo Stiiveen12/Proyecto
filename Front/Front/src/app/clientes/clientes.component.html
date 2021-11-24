@@ -1,0 +1,68 @@
+
+<div class="container mb-3" style="border: 0.1px solid black; padding: 30px; border-radius: 10px;">
+  <div class="container-fluid px-4 text-center">
+    <h1 class="mt-4">Tabla clientes - <button (click)='ocultar=true;reset()' class="btn btn-warning ">Nuevo Cliente</button></h1>
+
+  </div>
+    <table class="table table-success table-bordered table-hover">
+        <thead>
+          <tr>
+                <th>Cedula</th>
+                <th>Direccion</th>
+                <th>Correo</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of data">
+                <td>{{cliente.cedulacliente}}</td>
+                <td>{{cliente.direccioncliente}}</td>
+                <td>{{cliente.emailcliente}}</td>
+                <td>{{cliente.nombrecliente}}</td>
+                <td>{{cliente.telefonocliente}}</td>
+                <td>
+                    <button (click)='viewForm(cliente)' class="btn btn-warning  me-3">Editar</button>
+                    <button (click)='delete(cliente.id)' class="btn btn-danger">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+</div>
+<div *ngIf="ocultar==true" class="container" style="border: 0.1px solid black; padding: 30px; border-radius: 10px;">
+  <div *ngIf="boton=='Agregar'"  class="container-fluid px-4 text-center">
+    <h1 class="mt-4">Crear cliente</h1>
+</div>
+<div *ngIf="boton=='Actualizar'" class="container-fluid px-4 text-center">
+  <h1 class="mt-4">Actualizar cliente</h1>
+</div>
+  <form class="row g-3"  [formGroup]="form">
+    <input type="hidden" formControlName="id" value ="0">
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Cedula</label>
+      <input type="number" class="form-control"  formControlName="cedulacliente">
+    </div>
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Direccion</label>
+      <input type="text" class="form-control" formControlName="direccioncliente">
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Email</label>
+      <input type="email" class="form-control" formControlName="emailcliente">
+    </div>
+
+    <div class="col-md-6">
+      <label for="inputPassword4" class="form-label">Nombre</label>
+      <input type="text" class="form-control" formControlName="nombrecliente">
+    </div>
+    <div class="col-md-6">
+      <label for="inputEmail4" class="form-label">Telefono</label>
+      <input type="email" class="form-control" formControlName="telefonocliente">
+    </div>
+    <div class="col-12 text-center">
+      <button (click)='AddEdit()' class="btn btn-primary">{{boton}}</button>
+    </div>
+
+  </form>
+</div>
